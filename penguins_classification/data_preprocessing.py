@@ -28,10 +28,6 @@ class PenguinsDataProcessor:
         return df_train, df_test, y_train, y_test
 
     def fit_transform(self, df):
-        """
-        Converteix df a matriu (one-hot + scaled).
-        Guarda dv i scaler interns per poder reutilitzar transform().
-        """
         train_dict = df[self.cat_cols + self.num_cols].to_dict(orient='records')
         self.dv = DictVectorizer(sparse=False)
         X_cat_num = self.dv.fit_transform(train_dict)
